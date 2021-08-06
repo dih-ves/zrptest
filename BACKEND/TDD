@@ -1,0 +1,33 @@
+criar login do ADM: aqui ele pode cadastrar os produtos e coisas
+criar login do Vendedor: aqui ele pode criar orçamento, add clientes e etc
+
+
+front/backend:
+
+
+Login:Vendedor : redireciona para as atividades do Vendedor
+Login:ADM : redireciona para as atividades do ADM
+
+
+
+
+
+Criar bancos de dados:
+
+Cadastros ADM:
+
+- Loja
+- Usuario: ID, Nome, E-mail, Telefone : OK
+- Frete: distancia; valor
+- Produtos: descrição; material; Largura; Altura/Profundidade; Quantidade; Total M²; Valor total por m² solicitado;
+- Acabamento: descrição; Quantidade; Metro Linear; Metro Linear Total; Valor total calculado por metro linear informado
+- Ambiente de instalação: nome, largura, altura/Profundidade
+- Serviços: nome, descrição, preço, total;
+
+
+Cadastros Vendedor:
+
+- Cliente: nome; cpf/cnpj; RG/I.E ; Telefone; Celular; E-mail; Endereço; Bairro; CEP; Cidade; UF; Observações;
+- Orcamento:
+- Venda:
+

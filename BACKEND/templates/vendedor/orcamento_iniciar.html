@@ -1,0 +1,150 @@
+{% extends "bootstrap/base.html" %} {% block title %} Dashboard {% endblock %} {% block styles %} {{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}"> {% endblock %} {% block content %}
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            
+
+          </button>
+            <a class="navbar-brand" href="#">SGV</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search...">
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="http://localhost:5000/dashboard">Overview <span class="sr-only">(current)</span></a></li>
+                <li><a href="http://localhost:5000/clientes">Clientes</a></li>
+                <li><a href="http://localhost:5000/produtos">Produtos</a></li>
+                <li><a href="http://localhost:5000/orcamentos">Orçamentos</a></li>
+                <li><a href="http://localhost:5000/pedidos">Pedidos</a></li>
+            </ul>
+            <ul class="nav nav-sidebar">
+                <li><a href="http://localhost:5000/cadastrar_clientes">Adicionar cliente</a></li>
+
+                <li><a href="http://localhost:5000/orcamento_iniciar">Começar orçamento</a></li>
+                <li><a href="">Enviar pedido</a></li>
+
+            </ul>
+
+            <ul class="nav nav-sidebar">
+
+                <li><a href="">Relatórios</a></li>
+
+            </ul>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">{{ name }}</h1>
+
+
+            <h2 class="sub-header"> Começar orçamento: </h2>
+
+
+
+
+            <br><br>
+            <div class="shopping-cart">
+                <!-- Title -->
+                <div class="title">
+                    <h3> Adicionar produto:</h3>
+                </div>
+
+                <ul class="itens">
+
+                    {%for produto in produtos %}
+
+                    <div class="produtos">
+                        <br>
+                        <a class="produto_id"> ID: {{produto.id}} </a><br>
+                        <a class="nome"> Nome: {{produto.nome}} </a> <br>
+                        <a class="descricao"> Descrição: {{produto.descricao}} </a><br>
+                        <a class="preco"> Preço: {{produto.preco}} </a>
+
+                        <a class="tipoDeCalculo"> Tipo de calculo: {{produto.tipo_de_calculo}}</a>
+                        <input class="quantidade" type="number" oninput="myFunction(this.value)">
+                        <a class="precoXqtd">R$ </a>
+
+
+
+
+                    </div>
+
+
+                    <button class="adicionar" type="button">Adicionar</button>
+                    <button class="remover" type="button">Remover</button> {%endfor%}
+
+
+                </ul>
+
+                <br><br><br><br>
+                <h4 class="qtd_total_itens" id="qtd_total_itens"> QTD total de itens:</h2>
+
+                    <h3 class="valor_total"> Total R$:</h3>
+                    <button class="salvar" type="button">salvar</button>
+
+
+
+                    <script async>
+                        var botaoAdd = document.getElementsByClassName('adicionar')
+                        var botaoRemover = document.getElementsByClassName('remover')
+
+
+                        var preco = document.getElementsByClassName('preco')
+                        var quant = document.getElementsByClassName('quantidade')
+
+
+
+
+                        console.log(preco)
+                        console.log(quant)
+
+                        console.log(botaoAdd)
+                        console.log(botaoRemover)
+
+
+                        function myFunction(val) {
+                            document.getElementsByClassName("preco").innerHTML
+                            document.getElementById("qtd_total_itens").innerHTML = val;
+                            console.log(val)
+                        }
+                    </script>
+
+
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+    {% endblock %}
